@@ -21,10 +21,9 @@ const SCRIPT_URL = "https://www.google.com/recaptcha/api.js?onload=onRecaptchaLo
 interface RecaptchaWidgetProps {
   onVerify: (token: string) => void;
   onExpire?: () => void;
-  theme?: "light" | "dark";
 }
 
-export default function RecaptchaWidget({ onVerify, onExpire, theme: themeProp = "light" }: RecaptchaWidgetProps) {
+export default function RecaptchaWidget({ onVerify, onExpire }: RecaptchaWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<number | null>(null);
   const [ready, setReady] = useState(false);
@@ -69,7 +68,7 @@ export default function RecaptchaWidget({ onVerify, onExpire, theme: themeProp =
     try {
       widgetIdRef.current = window.grecaptcha.render(container, {
         sitekey: siteKey,
-        theme: themeProp,
+        theme: "light",
         callback: (token: string) => {
           onVerify(token);
         },
@@ -89,7 +88,7 @@ export default function RecaptchaWidget({ onVerify, onExpire, theme: themeProp =
         widgetIdRef.current = null;
       }
     };
-  }, [ready, siteKey, themeProp, onVerify, onExpire]);
+  }, [ready, siteKey, onVerify, onExpire]);
 
   if (error) {
     return (

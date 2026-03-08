@@ -17,7 +17,7 @@ const VerifyOtp = () => {
 
   const [timeLeft, setTimeLeft] = useState(120); // 2 minutes countdown
   const [otpExpiresAt, setOtpExpiresAt] = useState<number | null>(initialOtpExpiresAt); // Backend expiry timestamp
-  const timerIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timerIntervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Fetch OTP remaining time from backend
   const fetchOtpRemainingTime = async (userEmail: string) => {
