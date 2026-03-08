@@ -24,7 +24,7 @@ interface RecaptchaWidgetProps {
   theme?: "light" | "dark";
 }
 
-export default function RecaptchaWidget({ onVerify, onExpire, theme = "light" }: RecaptchaWidgetProps) {
+export default function RecaptchaWidget({ onVerify, onExpire, theme: themeProp = "light" }: RecaptchaWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<number | null>(null);
   const [ready, setReady] = useState(false);
@@ -69,7 +69,7 @@ export default function RecaptchaWidget({ onVerify, onExpire, theme = "light" }:
     try {
       widgetIdRef.current = window.grecaptcha.render(container, {
         sitekey: siteKey,
-        theme,
+        theme: themeProp,
         callback: (token: string) => {
           onVerify(token);
         },
@@ -89,7 +89,7 @@ export default function RecaptchaWidget({ onVerify, onExpire, theme = "light" }:
         widgetIdRef.current = null;
       }
     };
-  }, [ready, siteKey, theme, onVerify, onExpire]);
+  }, [ready, siteKey, themeProp, onVerify, onExpire]);
 
   if (error) {
     return (
