@@ -4,18 +4,13 @@ import {
   Lock,
   Monitor,
   User,
-  Mail,
-  Activity,
   AlertTriangle,
-  CheckCircle,
   TrendingUp,
   Settings,
   LogOut,
   Bell,
-  Key,
   FileText,
   Download,
-  RefreshCw,
   X,
   Clock,
 } from "lucide-react";
@@ -23,8 +18,6 @@ import { useNavigate } from "react-router-dom";
 import { decodeJWT } from "../utils/jwt";
 import * as api from "../api/dashboard";
 import { ToastContext } from "../context/ToastContext";
-
-const API_BASE = "http://localhost:8000/api";
 
 type Profile = {
   username: string;

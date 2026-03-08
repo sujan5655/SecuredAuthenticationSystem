@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Lock, Fingerprint, ArrowRight, Sparkles, Zap, Globe } from "lucide-react";
+import { ShieldCheck, Fingerprint, ArrowRight, Sparkles, Zap, Globe } from "lucide-react";
 
 const Home: React.FC = () => {
   return (

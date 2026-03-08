@@ -5,6 +5,7 @@ declare global {
     grecaptcha?: {
       render: (container: HTMLElement, options: {
         sitekey: string;
+        theme?: "light" | "dark";
         callback?: (token: string) => void;
         "expired-callback"?: () => void;
       }) => number;
@@ -68,6 +69,7 @@ export default function RecaptchaWidget({ onVerify, onExpire, theme = "light" }:
     try {
       widgetIdRef.current = window.grecaptcha.render(container, {
         sitekey: siteKey,
+        theme,
         callback: (token: string) => {
           onVerify(token);
         },
@@ -87,13 +89,7 @@ export default function RecaptchaWidget({ onVerify, onExpire, theme = "light" }:
         widgetIdRef.current = null;
       }
     };
-  }, [ready, siteKey, onVerify, onExpire]);
-
-  const reset = () => {
-    if (widgetIdRef.current != null && window.grecaptcha) {
-      window.grecaptcha.reset(widgetIdRef.current);
-    }
-  };
+  }, [ready, siteKey, theme, onVerify, onExpire]);
 
   if (error) {
     return (
