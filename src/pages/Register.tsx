@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff, User, Mail, Lock, Shield, ArrowRight, CheckCircle } from "lucide-react";
 import RecaptchaWidget from "../components/RecaptchaWidget";
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+
 const Register = () => {
   const [form, setForm] = useState({
     fullName: "",
@@ -84,7 +86,7 @@ const Register = () => {
     try {
       setIsLoading(true);
 
-      const res = await fetch("http://localhost:8000/api/register", {
+      const res = await fetch(`${API_BASE}/register`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

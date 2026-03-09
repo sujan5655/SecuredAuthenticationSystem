@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Mail, KeyRound, ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import RecaptchaWidget from "../components/RecaptchaWidget";
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -33,7 +35,7 @@ const ForgotPassword = () => {
     try {
       setIsLoading(true);
 
-      const res = await fetch("http://localhost:8000/api/forgotpassword", {
+      const res = await fetch(`${API_BASE}/forgotpassword`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, recaptchaToken }),

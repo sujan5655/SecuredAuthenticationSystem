@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShieldCheck, RefreshCw, CheckCircle, AlertCircle, Lock } from "lucide-react";
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+
 const Captcha = () => {
   const [captchaUrl, setCaptchaUrl] = useState<string>("");
   const [userInput, setUserInput] = useState<string>("");
@@ -20,7 +22,7 @@ const Captcha = () => {
       setIsLoading(true);
       if (captchaUrl) URL.revokeObjectURL(captchaUrl);
 
-      const response = await fetch("http://localhost:8000/api/captcha", {
+      const response = await fetch(`${API_BASE}/captcha`, {
         credentials: "include",
       });
 
@@ -55,7 +57,7 @@ const Captcha = () => {
 
   const handleVerify = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/verify-captcha", {
+      const res = await fetch(`${API_BASE}/verify-captcha`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

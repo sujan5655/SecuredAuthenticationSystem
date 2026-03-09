@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ShieldCheck, Mail, Key, Clock, CheckCircle, AlertCircle, RefreshCw, ArrowLeft } from "lucide-react";
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+
 const VerifyOtp = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,7 +24,7 @@ const VerifyOtp = () => {
   // Fetch OTP remaining time from backend
   const fetchOtpRemainingTime = async (userEmail: string) => {
     try {
-      const res = await fetch("http://localhost:8000/api/otp-remaining-time", {
+      const res = await fetch(`${API_BASE}/otp-remaining-time`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail }),
@@ -129,7 +131,7 @@ const VerifyOtp = () => {
     setLoading(true);
     setMessage("");
     try {
-      const response = await fetch("http://localhost:8000/api/verify-otp", {
+      const response = await fetch(`${API_BASE}/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, otp }),
@@ -170,7 +172,7 @@ const VerifyOtp = () => {
     setLoading(true);
     setMessage("");
     try {
-      const res = await fetch("http://localhost:8000/api/resend-otp", {
+      const res = await fetch(`${API_BASE}/resend-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

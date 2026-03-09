@@ -3,6 +3,8 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff, Lock, KeyRound, ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
 import RecaptchaWidget from "../components/RecaptchaWidget";
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -80,7 +82,7 @@ const ResetPassword = () => {
 
     try {
       setIsLoading(true);
-      const res = await fetch("http://localhost:8000/api/resetpassword", {
+      const res = await fetch(`${API_BASE}/resetpassword`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
