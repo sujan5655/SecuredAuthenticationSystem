@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Mail, KeyRound, ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import RecaptchaWidget from "../components/RecaptchaWidget";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");

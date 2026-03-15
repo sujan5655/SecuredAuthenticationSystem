@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff, User, Mail, Lock, Shield, ArrowRight, CheckCircle } from "lucide-react";
 import RecaptchaWidget from "../components/RecaptchaWidget";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const Register = () => {
   const [form, setForm] = useState({

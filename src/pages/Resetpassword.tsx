@@ -3,7 +3,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff, Lock, KeyRound, ArrowRight, CheckCircle, AlertCircle } from "lucide-react";
 import RecaptchaWidget from "../components/RecaptchaWidget";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");

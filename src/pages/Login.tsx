@@ -21,6 +21,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const toast = useContext(ToastContext);
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     setTimeout(() => setFade(true), 200);
@@ -30,8 +31,6 @@ const Login = () => {
   useEffect(() => {
     if (accountLocked && form.email) setAccountLocked(false);
   }, [form.email]);
-
-  const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
 
   const fetchCaptcha = async () => {
     try {

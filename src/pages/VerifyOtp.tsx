@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ShieldCheck, Mail, Key, Clock, CheckCircle, AlertCircle, RefreshCw, ArrowLeft } from "lucide-react";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const VerifyOtp = () => {
   const navigate = useNavigate();
